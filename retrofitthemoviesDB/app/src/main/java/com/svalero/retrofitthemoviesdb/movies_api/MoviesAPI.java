@@ -1,5 +1,6 @@
 package com.svalero.retrofitthemoviesdb.movies_api;
 
+import com.svalero.retrofitthemoviesdb.json_mapper.Movie;
 import com.svalero.retrofitthemoviesdb.json_mapper.MovieResponse;
 
 import retrofit2.Call;
@@ -14,5 +15,6 @@ public interface MoviesAPI {
     Call<MovieResponse> getMovie();
 
     @GET("movie/570?api_key=0209ca739b26088eeceffe3ba899f792&language=es-ES&page=1")
-    Call<MovieResponse> getDetails();
+    Call<Movie> getDetails();
 }
+

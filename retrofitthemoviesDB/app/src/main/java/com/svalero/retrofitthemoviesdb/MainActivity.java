@@ -106,28 +106,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void hacerFetchDetalles(){
-        Toast.makeText(MainActivity.this,
-                "Furula: ",
-                Toast.LENGTH_SHORT).show();
-        Call<MovieResponse> call = RetrofitClient.getInstance().
+        Call<Movie> call = RetrofitClient.getInstance().
                 getDetails();
-        call.enqueue(new Callback<MovieResponse>() {
+        call.enqueue(new Callback<Movie>() {
             @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+            public void onResponse(Call<Movie> call, Response<Movie> response) {
                 if (response.isSuccessful()) {
-                    List<Movie> movies = response.body().getResults();
+                    Movie movie = response.body();
                     // Procesa y muestra las películas aquí
-                    for (Movie myMovie : movies
-                    ) {
+
                         Toast.makeText(MainActivity.this,
-                                "Movie: " + myMovie.getTitle(),
+                                "Movie: " + movie.getTitle(),
                                 Toast.LENGTH_SHORT).show();
-                    }
+
                 }
             }
 
             @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t) {
+            public void onFailure(Call<Movie> call, Throwable t) {
 
             }
         });
